@@ -6,6 +6,8 @@ namespace DesafioFundamentos.Models
         private decimal precoPorHora = 0;
         private List<string> veiculos = new List<string>();
 
+        //string placa;
+
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
@@ -17,6 +19,11 @@ namespace DesafioFundamentos.Models
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+
+            // $$$ - MEU CODIGO - $$$
+            string placa = Console.ReadLine ();  //ESPERA digitar a placa
+            veiculos.Add(placa);
+
         }
 
         public void RemoverVeiculo()
@@ -25,7 +32,13 @@ namespace DesafioFundamentos.Models
 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
-            string placa = "";
+            //string placa = "";
+
+            // $$$ - MEU CODIGO - $$$
+            string placa = Console.ReadLine ();  //ESPERA digitar a placa
+            //veiculos.Remove(placa);
+
+
 
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
@@ -38,8 +51,22 @@ namespace DesafioFundamentos.Models
                 int horas = 0;
                 decimal valorTotal = 0; 
 
+                // $$$ MEU CÓDIGO $$$
+                string quantidadeHoras = Console.ReadLine();
+                
+                int.TryParse (quantidadeHoras, out horas);
+
+                valorTotal = precoInicial + precoPorHora * horas;
+
+                
+
+
+
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+
+                // $$$ MEU CÒDIGO $$$
+                veiculos.Remove(placa);
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
@@ -57,6 +84,14 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
+
+                // $$$ MEU CÒDIGO $$$
+                //Console.WriteLine("Percorrendo Lista com ForEach");
+
+                foreach(string item in veiculos)
+                {
+                    Console.WriteLine(item);
+                }
             }
             else
             {
